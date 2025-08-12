@@ -1,0 +1,110 @@
+-- LAWSHUB Key System by ChatGPT
+-- Key: LAWSHUB FOREST
+-- Discord: https://discord.gg/8kJb9RrRvc
+
+-- Services
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local StarterGui = game:GetService("StarterGui")
+local Clipboard = setclipboard or toclipboard -- Clipboard function
+
+-- GUI Setup
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = game.CoreGui
+
+local Frame = Instance.new("Frame")
+Frame.Size = UDim2.new(0, 300, 0, 160)
+Frame.Position = UDim2.new(0.5, -150, 0.5, -80)
+Frame.BackgroundColor3 = Color3.fromRGB(25, 25, 35)
+Frame.BorderSizePixel = 0
+Frame.Active = true
+Frame.Draggable = true
+Frame.Parent = ScreenGui
+
+local UIStroke = Instance.new("UIStroke", Frame)
+UIStroke.Thickness = 2
+UIStroke.Color = Color3.fromRGB(0, 170, 255)
+
+local UICorner = Instance.new("UICorner", Frame)
+UICorner.CornerRadius = UDim.new(0, 12)
+
+local Title = Instance.new("TextLabel")
+Title.Size = UDim2.new(1, 0, 0, 40)
+Title.BackgroundTransparency = 1
+Title.Text = " LAWSHUB"
+Title.Font = Enum.Font.GothamBold
+Title.TextSize = 18
+Title.TextColor3 = Color3.fromRGB(0, 200, 255)
+Title.Parent = Frame
+
+local KeyBox = Instance.new("TextBox")
+KeyBox.Size = UDim2.new(0.9, 0, 0, 35)
+KeyBox.Position = UDim2.new(0.05, 0, 0.35, 0)
+KeyBox.PlaceholderText = "Enter Key..."
+KeyBox.Text = ""
+KeyBox.Font = Enum.Font.Gotham
+KeyBox.TextSize = 14
+KeyBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+KeyBox.BackgroundColor3 = Color3.fromRGB(35, 35, 50)
+KeyBox.Parent = Frame
+Instance.new("UICorner", KeyBox).CornerRadius = UDim.new(0, 8)
+
+local GetKeyBtn = Instance.new("TextButton")
+GetKeyBtn.Size = UDim2.new(0.42, 0, 0, 30)
+GetKeyBtn.Position = UDim2.new(0.05, 0, 0.7, 0)
+GetKeyBtn.Text = " Get Key"
+GetKeyBtn.Font = Enum.Font.GothamBold
+GetKeyBtn.TextSize = 14
+GetKeyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+GetKeyBtn.BackgroundColor3 = Color3.fromRGB(0, 150, 255)
+Instance.new("UICorner", GetKeyBtn).CornerRadius = UDim.new(0, 6)
+GetKeyBtn.Parent = Frame
+
+local CheckKeyBtn = Instance.new("TextButton")
+CheckKeyBtn.Size = UDim2.new(0.42, 0, 0, 30)
+CheckKeyBtn.Position = UDim2.new(0.53, 0, 0.7, 0)
+CheckKeyBtn.Text = "Check Key"
+CheckKeyBtn.Font = Enum.Font.GothamBold
+CheckKeyBtn.TextSize = 14
+CheckKeyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+CheckKeyBtn.BackgroundColor3 = Color3.fromRGB(0, 200, 100)
+Instance.new("UICorner", CheckKeyBtn).CornerRadius = UDim.new(0, 6)
+CheckKeyBtn.Parent = Frame
+
+-- Button Functions
+GetKeyBtn.MouseButton1Click:Connect(function()
+	if Clipboard then
+		Clipboard("https://discord.gg/8kJb9RrRvc")
+		StarterGui:SetCore("SendNotification", {
+			Title = "LAWSHUB",
+			Text = "Discord link copied to clipboard!",
+			Duration = 3
+		})
+	else
+		StarterGui:SetCore("SendNotification", {
+			Title = "LAWSHUB",
+			Text = "Clipboard not supported. Key: LAWSHUB FOREST",
+			Duration = 4
+		})
+	end
+end)
+
+CheckKeyBtn.MouseButton1Click:Connect(function()
+	if KeyBox.Text == "LAWSHUB NEWHUB👑" then
+		StarterGui:SetCore("SendNotification", {
+			Title = "✅ Access Granted",
+			Text = "Loading LAWSHUB Script...",
+			Duration = 3
+		})
+		ScreenGui:Destroy()
+		loadstring(game:HttpGet("https://rawscripts.net/raw/NOLI-Forsaken-Hutao-Hub-48259"))()
+	else
+		StarterGui:SetCore("SendNotification", {
+			Title = "❌ Invalid Key",
+			Text = "Join our Discord to get the key.",
+			Duration = 3
+		})
+	end
+end)
